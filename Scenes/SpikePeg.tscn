@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/WorldLogic/PegController.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Pegs/SpikePeg_New.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Pegs/SpikePegShadow.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.41425
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 26.98
+
+[node name="SpikePeg" type="PinJoint2D" groups=[
+"nearby_pegs",
+]]
+scale = Vector2( 2.26334, 2.26334 )
+node_b = NodePath("KinematicBody2D")
+script = ExtResource( 1 )
+explode_time = 3
+blink_time = 0.125
+blink_color = Color( 1, 0.360784, 0.360784, 1 )
+
+[node name="Shadow" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Peg" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="Dock" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 1 )
+disabled = true
+one_way_collision_margin = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+space_override = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+one_way_collision_margin = 0.0

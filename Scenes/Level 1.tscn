@@ -1,0 +1,297 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Scripts/Camera/CameraController.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/RegularPeg.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/PlayerV2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/urban level/Tower1Back_1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/urban level/Tower2Back_1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/urban level/Tower2Back_2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/urban level/Tower1Back_2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/urban level/BuildingsDetail2_4.png" type="Texture" id=8]
+[ext_resource path="res://Assets/urban level/Cloud2_3.png" type="Texture" id=9]
+[ext_resource path="res://Assets/urban level/BuildingsDetail1_4.png" type="Texture" id=10]
+[ext_resource path="res://Assets/urban level/BottomShadow_7.png" type="Texture" id=11]
+[ext_resource path="res://Assets/urban level/SideWall_8.png" type="Texture" id=12]
+[ext_resource path="res://Assets/urban level/SidesShadow_7.png" type="Texture" id=13]
+[ext_resource path="res://Assets/urban level/UrbanBackground_0.png" type="Texture" id=14]
+[ext_resource path="res://Scripts/Camera/BackgroundFollow.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/WorldLogic/WorldLogic.gd" type="Script" id=16]
+[ext_resource path="res://fonts/SEGOEUIL.TTF" type="DynamicFontData" id=17]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0.419608 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="DynamicFont" id=2]
+size = 66
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 17 )
+
+[node name="World" type="Node2D"]
+position = Vector2( -0.527893, -1.59433 )
+script = ExtResource( 16 )
+foregrounds_paths = [ NodePath("Foreground3"), NodePath("Foreground"), NodePath("Foreground2") ]
+
+[node name="FarBackground" type="Node2D" parent="."]
+position = Vector2( 506.718, 1474.61 )
+script = ExtResource( 15 )
+camera_path = NodePath("../Camera2D")
+follow_speed = 10
+
+[node name="UrbanBackground_0" type="Sprite" parent="FarBackground"]
+position = Vector2( -1.50763, -479.884 )
+scale = Vector2( 1, 1.74949 )
+texture = ExtResource( 14 )
+offset = Vector2( 34.7244, 122.634 )
+
+[node name="Tower1Back_1" type="Sprite" parent="FarBackground"]
+position = Vector2( -1.50751, -362.853 )
+rotation = 8.88506e-06
+texture = ExtResource( 4 )
+offset = Vector2( 74.42, 128.798 )
+
+[node name="Tower2Back_1" type="Sprite" parent="FarBackground"]
+position = Vector2( -1.50751, -362.853 )
+texture = ExtResource( 5 )
+offset = Vector2( -269.4, 259.521 )
+
+[node name="Tower2Back_3" type="Sprite" parent="FarBackground"]
+position = Vector2( -1.50751, -362.853 )
+texture = ExtResource( 5 )
+offset = Vector2( 410.044, 172.068 )
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2( 505.295, 1476.07 )
+script = ExtResource( 15 )
+camera_path = NodePath("../Camera2D")
+follow_speed = 7
+
+[node name="Tower2Back_2" type="Sprite" parent="Background"]
+position = Vector2( 269.931, 276.492 )
+scale = Vector2( 1, 1.18524 )
+texture = ExtResource( 6 )
+
+[node name="Tower1Back_2" type="Sprite" parent="Background"]
+position = Vector2( -211.061, 340.412 )
+scale = Vector2( 1, 1.1838 )
+texture = ExtResource( 7 )
+
+[node name="Cloud2_3" type="Sprite" parent="Background"]
+position = Vector2( -246.671, -348.279 )
+scale = Vector2( 0.69591, 0.69591 )
+texture = ExtResource( 9 )
+
+[node name="Cloud2_4" type="Sprite" parent="Background"]
+position = Vector2( 104.054, -59.7796 )
+texture = ExtResource( 9 )
+
+[node name="Foreground" type="Node2D" parent="."]
+position = Vector2( -22.4492, 345.718 )
+
+[node name="BuildingsDetail1_4" type="Sprite" parent="Foreground"]
+position = Vector2( 578.777, 1422.64 )
+scale = Vector2( 1.45235, 1.45235 )
+texture = ExtResource( 10 )
+
+[node name="BuildingsDetail2_4" type="Sprite" parent="Foreground"]
+position = Vector2( 530.763, -0.832672 )
+scale = Vector2( 1.05441, 1.05441 )
+texture = ExtResource( 8 )
+
+[node name="SidesShadow_7" type="Sprite" parent="Foreground"]
+position = Vector2( 539.632, 977.626 )
+scale = Vector2( 1, 1.39606 )
+texture = ExtResource( 13 )
+
+[node name="SideWall_11" type="Sprite" parent="Foreground"]
+position = Vector2( 1813.63, 977.544 )
+scale = Vector2( 2.98836, 1.30829 )
+texture = ExtResource( 12 )
+
+[node name="SideWall_10" type="Sprite" parent="Foreground"]
+position = Vector2( -664.037, 975.29 )
+rotation = -3.14159
+scale = Vector2( 2.68049, 1.30829 )
+texture = ExtResource( 12 )
+
+[node name="SideWall_8" type="Sprite" parent="Foreground"]
+position = Vector2( -137.212, 975.173 )
+scale = Vector2( 1, 1.30806 )
+texture = ExtResource( 12 )
+
+[node name="SideWall_9" type="Sprite" parent="Foreground"]
+position = Vector2( 1251.23, 977.662 )
+rotation = -3.14159
+scale = Vector2( 1, 1.30783 )
+texture = ExtResource( 12 )
+
+[node name="Foreground2" type="Node2D" parent="."]
+position = Vector2( -22.4492, 3025.83 )
+
+[node name="BuildingsDetail1_4" type="Sprite" parent="Foreground2"]
+position = Vector2( 583.534, 433.22 )
+rotation = 0.284227
+scale = Vector2( 1.94105, 1.94105 )
+texture = ExtResource( 10 )
+
+[node name="BuildingsDetail2_4" type="Sprite" parent="Foreground2"]
+position = Vector2( 511.735, 1240.7 )
+rotation = -0.386718
+scale = Vector2( 1.05441, 1.05441 )
+texture = ExtResource( 8 )
+
+[node name="SidesShadow_7" type="Sprite" parent="Foreground2"]
+position = Vector2( 539.632, 977.626 )
+scale = Vector2( 1, 1.39606 )
+texture = ExtResource( 13 )
+
+[node name="SideWall_11" type="Sprite" parent="Foreground2"]
+position = Vector2( 1813.63, 977.544 )
+scale = Vector2( 2.98836, 1.30829 )
+texture = ExtResource( 12 )
+
+[node name="SideWall_10" type="Sprite" parent="Foreground2"]
+position = Vector2( -664.037, 975.29 )
+rotation = -3.14159
+scale = Vector2( 2.68049, 1.30829 )
+texture = ExtResource( 12 )
+
+[node name="SideWall_8" type="Sprite" parent="Foreground2"]
+position = Vector2( -137.212, 975.173 )
+scale = Vector2( 1, 1.30806 )
+texture = ExtResource( 12 )
+
+[node name="SideWall_9" type="Sprite" parent="Foreground2"]
+position = Vector2( 1251.23, 977.662 )
+rotation = -3.14159
+scale = Vector2( 1, 1.30783 )
+texture = ExtResource( 12 )
+
+[node name="Foreground3" type="Node2D" parent="."]
+position = Vector2( -22.4663, -2337.3 )
+
+[node name="BuildingsDetail1_4" type="Sprite" parent="Foreground3"]
+position = Vector2( 593.896, 591.092 )
+scale = Vector2( 1.45235, 1.45235 )
+texture = ExtResource( 10 )
+
+[node name="BuildingsDetail2_4" type="Sprite" parent="Foreground3"]
+position = Vector2( 545.882, 24.3658 )
+scale = Vector2( 1.05441, 1.05441 )
+texture = ExtResource( 8 )
+
+[node name="SidesShadow_7" type="Sprite" parent="Foreground3"]
+position = Vector2( 539.632, 977.626 )
+scale = Vector2( 1, 1.39606 )
+texture = ExtResource( 13 )
+
+[node name="SideWall_11" type="Sprite" parent="Foreground3"]
+position = Vector2( 1813.63, 977.544 )
+scale = Vector2( 2.98836, 1.30829 )
+texture = ExtResource( 12 )
+
+[node name="SideWall_10" type="Sprite" parent="Foreground3"]
+position = Vector2( -664.037, 975.29 )
+rotation = -3.14159
+scale = Vector2( 2.68049, 1.30829 )
+texture = ExtResource( 12 )
+
+[node name="SideWall_8" type="Sprite" parent="Foreground3"]
+position = Vector2( -137.212, 975.173 )
+scale = Vector2( 1, 1.30806 )
+texture = ExtResource( 12 )
+
+[node name="SideWall_9" type="Sprite" parent="Foreground3"]
+position = Vector2( 1251.23, 977.662 )
+rotation = -3.14159
+scale = Vector2( 1, 1.30783 )
+texture = ExtResource( 12 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 297.542, 1310.26 )
+gravity_scale = 27.4
+seek_multiplyer = 700
+
+[node name="RegularPeg" parent="." instance=ExtResource( 2 )]
+position = Vector2( 511.843, 1313.28 )
+scale = Vector2( 2.26605, 2.26605 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 551.433, 962.68 )
+current = true
+script = ExtResource( 1 )
+player_path = NodePath("../Player")
+
+[node name="BottomShadow_7" type="Sprite" parent="Camera2D"]
+position = Vector2( 6.12457, 1075.01 )
+texture = ExtResource( 11 )
+
+[node name="UI" type="Control" parent="Camera2D"]
+pause_mode = 2
+visible = false
+margin_left = -551.433
+margin_top = -962.68
+margin_right = 523.567
+margin_bottom = 956.32
+size_flags_horizontal = 7
+size_flags_vertical = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Camera2D/UI"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -252.5
+margin_bottom = 251.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Camera2D/UI/CenterContainer"]
+margin_left = 187.0
+margin_top = 1.0
+margin_right = 887.0
+margin_bottom = 501.0
+rect_min_size = Vector2( 700, 500 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/UI/CenterContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Camera2D/UI/CenterContainer/Panel/VBoxContainer"]
+margin_top = 79.0
+margin_right = 700.0
+margin_bottom = 168.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 2 )
+text = "Score :"
+align = 1
+
+[node name="Restart" type="Button" parent="Camera2D/UI/CenterContainer/Panel/VBoxContainer"]
+margin_left = 250.0
+margin_top = 351.0
+margin_right = 450.0
+margin_bottom = 401.0
+rect_min_size = Vector2( 400, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 3 )
+text = "Try Again !"
