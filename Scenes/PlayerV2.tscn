@@ -20,8 +20,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 169.276
-height = 109.36
+radius = 137.298
+height = 108.484
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 32.8581
@@ -51,12 +51,12 @@ node_a = NodePath("../Head")
 node_b = NodePath("..")
 bias = 0.9
 disable_collision = false
-softness = 1.4
+softness = 2.7
 
 [node name="HandsSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 129.514, 2.17055 )
+position = Vector2( 146.351, 2.17053 )
 rotation = 1.57079
-scale = Vector2( 0.340594, 0.340594 )
+scale = Vector2( 0.268989, 0.268989 )
 frames = SubResource( 1 )
 
 [node name="HandsCollider" type="CollisionShape2D" parent="."]
@@ -69,6 +69,7 @@ position = Vector2( 212.561, 2.00001 )
 
 [node name="Head" type="RigidBody2D" parent="."]
 position = Vector2( -15.6408, 0.765289 )
+mode = 2
 contacts_reported = 5
 contact_monitor = true
 can_sleep = false
@@ -81,7 +82,7 @@ disabled = true
 [node name="HeadSprite" type="AnimatedSprite" parent="Head"]
 position = Vector2( 11.2307, -1.28589 )
 rotation = 1.57079
-scale = Vector2( 0.403669, 0.400515 )
+scale = Vector2( 0.351418, 0.348672 )
 frames = SubResource( 4 )
 
 [node name="BodyTouchable" type="TouchScreenButton" parent="Head/HeadSprite"]

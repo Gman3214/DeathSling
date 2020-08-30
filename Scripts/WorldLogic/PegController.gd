@@ -53,7 +53,7 @@ func _on_body_exited(body):
 
 func _on_explode_timer_timeout():
 	player.get_node("HandsSprite").frame = 0;
-	player.get_node("HandsSprite").position.x = 129.514
+	player.get_node("HandsSprite").position.x = 146.351
 	player.get_node("HandsSprite").visible = false;
 	player.get_node("Head/HeadSprite").frame = 0;
 	player.is_hanging = false;

@@ -49,7 +49,7 @@ func _process(delta):
 		score = (player_start - player.position).length();
 	if !player.get_node("VisibilityNotifier2D").is_on_screen():
 		$Camera2D/UI.show();
-		$Camera2D/UI/CenterContainer/Panel/VBoxContainer/Score.text = "Score: " + String(score);
+		$Camera2D/UI/CenterContainer/Panel/VBoxContainer/Score.text = "Score: " + String(int(score));
 		get_tree().paused = true;
 		player.queue_free();
 		

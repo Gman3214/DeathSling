@@ -26,14 +26,20 @@ func _ready():
 
 
 func _physics_process(delta):
+	
+		
 	if (is_hanging and body_pressed):
-		impulse_vector = global_position - get_global_mouse_position();
+		impulse_vector = current_peg.position - get_global_mouse_position();
+
 		headMovement();
 	elif(!is_hanging and !next_peg):
 		OrientCatch()
 
 	if(next_peg):
 		catchPeg(delta);
+		
+	$Head.look_at(Vector2.UP * 1000000);
+	
 
 
 func OrientCatch():
@@ -42,7 +48,10 @@ func OrientCatch():
 			closest_peg = peg
 		if (closest_peg.distance(global_position) > peg.distance(global_position)):
 			closest_peg = peg;
-		look_at(closest_peg.position)
+		look_at(closest_peg.position);
+
+		
+
 
 
 
@@ -51,10 +60,10 @@ func catchPeg(delta):
 	if (next_peg):
 		var offset = (position - $HandsSwingPos.global_position) ;
 		look_at(next_peg.position);
+
 		
 		linear_velocity = ((next_peg.position + offset ) - (position)) * seek_multiplyer * delta;
 		
-		print(($HandsSwingPos.global_position - next_peg.position).length())
 		if (($HandsSwingPos.global_position - next_peg.position).length() < 20):
 			look_at(next_peg.position);
 			next_peg.node_a = self.get_path();
@@ -69,6 +78,7 @@ func catchPeg(delta):
 
 func headMovement():
 	$Head.apply_central_impulse((get_global_mouse_position() - $Head.global_position) * 8)
+	angular_velocity = 0
 	$Head/HeadCollider.disabled = true;
 	animateStretch();
 
@@ -77,21 +87,21 @@ func animateStretch():
 	if (impulse_vector.length() < 300):
 		$Head/HeadSprite.frame = 1;
 		$HandsSprite.frame = 0;
-		$HandsSprite.position.x = 129;
+		$HandsSprite.position.x = 146.351;
 
 	elif (impulse_vector.length() < 500):
 		
 		$Head/HeadSprite.frame = 2;
 		
 		$HandsSprite.frame = 1;
-		$HandsSprite.position.x = 111;
+		$HandsSprite.position.x = 134.004;
 
-	elif (impulse_vector.length() < 700):
+	elif (impulse_vector.length() < 650):
 
 		$Head/HeadSprite.frame = 3;
 		
 		$HandsSprite.frame = 2;
-		$HandsSprite.position.x = 100;
+		$HandsSprite.position.x = 122.779;
 
 
 	elif (impulse_vector.length() < 10000):
@@ -99,7 +109,7 @@ func animateStretch():
 		$Head/HeadSprite.frame = 4;
 		
 		$HandsSprite.frame = 3;
-		$HandsSprite.position.x = 68;
+		$HandsSprite.position.x = 99.208;
 
 	
 	
@@ -115,7 +125,7 @@ func _on_body_released():
 			current_peg.node_a = "";
 		apply_central_impulse(impulse_vector * impulse_multiplier);
 		$HandsSprite.frame = 0;
-		$HandsSprite.position.x = 129.514
+		$HandsSprite.position.x = 146.351
 		$Head/HeadSprite.frame = 0;
 		$HandsSprite.visible = false;
 		is_hanging = false;

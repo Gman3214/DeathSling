@@ -5,7 +5,7 @@ export (NodePath) var player_path;
 export var camera_offset = 400;
 export var horizontal_helper = 200;
 
-var camera_speed = 2;
+var camera_speed = 4;
 var player;
 var highest = 0;
 
